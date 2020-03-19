@@ -1,0 +1,32 @@
+header {
+  padding-left: 32px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  display: inline-flex;
+  flex-direction: row;
+  height: 64px;
+}
+
+h1 {
+  padding-right: 1em;
+}
+
+a {
+  padding: 1em;
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: black;
+}
+
+nav {
+  width: 25em;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.1em;
+}

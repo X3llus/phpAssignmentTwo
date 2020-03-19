@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Restaurant Review</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300|Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/master.css">
-  </head>
   <body>
 
-    <?php require_once ('header.php'); ?>
+    <?php
+      $title = "Reviews";
+      require_once ('header.php');
+    ?>
 
     <table class="table table-striped table-hover">
       <thead><th>Restaurants</th><th>Rating</th><th>Review</th></thead>
