@@ -14,7 +14,18 @@
       <nav>
         <a href="./">Home</a>
         <a href="./reviews.php">Reviews</a>
-        <a href="./newRestaurant.php">Leave a Review</a>
+
+        <?php
+          session_start();
+          if (!empty($_SESSION["userId"])) {
+            echo "<a href=\"./newRestaurant.php\">Leave a Review</a>";
+          } else {
+            echo "<a href=\"./signup.php\">Sign up</a>";
+            echo "<a href=\"./login.php\">Log in</a>";
+          }
+
+
+        ?>
       </nav>
     </header>
   </body>
