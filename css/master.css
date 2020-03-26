@@ -19,3 +19,8 @@ main {
   width: 40%;
   margin: 2em 30% 0 30%;
 }
+
+body > a {
+  width: 6%;
+  margin: 1.5em 47%;
+}

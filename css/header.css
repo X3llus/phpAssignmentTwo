@@ -11,20 +11,20 @@ h1 {
   padding-right: 1em;
 }
 
-a {
+nav *, table a {
   padding: 1em;
   color: black;
   text-decoration: none;
 }
 
-a:hover {
+nav a:hover, table a:hover {
   color: white;
   text-decoration: none;
   background-color: black;
 }
 
 nav {
-  width: 25em;
+  width: 40em;
   display: flex;
   justify-content: space-between;
   font-weight: bold;
