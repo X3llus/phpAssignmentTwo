@@ -28,7 +28,7 @@
 
       $valid = true;
 
-      if(empty($usernames)) {
+      if(empty($username)) {
         echo "Email cannot be empty <br />";
         $valid = false;
       }
@@ -49,27 +49,31 @@
       }
 
       if ($valid) {
+
+        $hashed = password_hash($password, PASSWORD_DEFAULT);
+
         $db = new PDO('mysql:host=172.31.22.43;dbname=Braden_W1095701', 'Braden_W1095701', 'P8TwvNsomx');
 
         $insert = "INSERT INTO users (username, password) VALUES (:username, :password);";
         $cmd = $db->prepare($insert);
 
         $cmd->bindParam(':username', $username, PDO::PARAM_STR);
-        $cmd->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $cmd->bindParam(':password', $hashed, PDO::PARAM_STR);
 
         $cmd->execute();
 
         // Get and store userId
-        $select = "SELECT userId FROM users WHERE username == :username;";
-        $cmd = $db->prepare($insert);
+        $select = "SELECT userId FROM users WHERE username = :username;";
+        $cmd = $db->prepare($select);
 
         $cmd->bindParam(':username', $username, PDO::PARAM_STR);
 
         $cmd->execute();
-        $users = $cmd->fetch();
+        $users = $cmd->fetchAll();
 
         session_start();
-        $_SESSION["userId"] = $users["userId"];
+        $_SESSION["userId"] = $users[0]["userId"];
+        $_SESSION["email"] = $users[0]["username"];
 
         $db = null;
 
