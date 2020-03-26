@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <?php
+    $title = "Reviews";
+    require_once("header.php");
+  ?>
   <body>
+    <br />
+      <a href="./newRestaurant.php">Leave Review</a>
+    <table class="table table-hover table-bordered">
 
-    <?php
-      $title = "Reviews";
-      require_once ('header.php');
-    ?>
-
-    <table class="table table-striped table-hover">
-      <thead><th>Restaurants</th><th>Rating</th><th>Review</th></thead>
+      <thead class="thead-dark"><th>Restaurants</th><th>Rating</th><th>Review</th></thead>
       <?php
 
       // Connect to my database

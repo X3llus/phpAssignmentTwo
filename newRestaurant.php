@@ -1,7 +1,6 @@
 <?php
 
   require_once("auth.php");
-  // checkLoggedIn();
 
   if (!empty($_GET["id"])) {
     $id = $_GET["id"];
@@ -20,6 +19,10 @@
     $rating = $review["Rating"];
     $rev = $review["Review"];
 
+  } else {
+    $res = null;
+    $rating = null;
+    $rev = null;
   }
 
 ?>
@@ -29,7 +32,7 @@
   <body>
     <?php
       $title = "Leave a Review";
-      require_once ('header.php');
+      require_once('header.php');
     ?>
     <form action="addRestaurant.php" method="post">
       <h1>Leave a Review</h1>
