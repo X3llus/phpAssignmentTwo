@@ -20,14 +20,12 @@
             session_start();
           }
           if (!empty($_SESSION["userId"])) {
-            // echo "<a href=\"./newRestaurant.php\">Leave Review</a>";
             echo "<div>" . $_SESSION["email"] . "</div>";
             echo "<a href=\"./logout.php\">Log out</a>";
           } else {
             echo "<a href=\"./signup.php\">Sign up</a>";
             echo "<a href=\"./login.php\">Log in</a>";
           }
-
 
         ?>
       </nav>
