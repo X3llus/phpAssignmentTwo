@@ -54,17 +54,18 @@
       $valid = false;
     }
 
-    if (!empty($photo['tmp_name'])) {
-    $photoName = $photo['name'];
-    $tmp_name = $photo['tmp_name'];
+    if (!empty($photo["tmp_name"])) {
+    $photoName = $photo["name"];
+    $tmp_name = $photo["tmp_name"];
     $type = mime_content_type($tmp_name);
 
-    if ($type != 'image/*') {
-        echo 'File must be an image';
+    if ($type != "image/jpg" && $type != "image/png" && $type != "image/jpeg") {
+        echo "File must be an image";
+        echo $type;
         $ok = false;
     }
 
-    $photoName = session_id() . '-' . $photoName;
+    $photoName = session_id() . "-" . $photoName;
     move_uploaded_file($tmp_name, "./uploadedImages/$photoName");
 }
 
@@ -75,7 +76,7 @@
           $insert = "INSERT INTO Reviews (restaurant_id, rating, review, photoName) VALUES (:restaurant, :rating, :review , :photoName);";
           $cmd = $db->prepare($insert);
         } else {
-          $update = "UPDATE Reviews SET restaurant_id = :restaurant, rating = :rating, review = :review WHERE id = :id;";
+          $update = "UPDATE Reviews SET restaurant_id = :restaurant, rating = :rating, review = :review, photoName = :photoName WHERE id = :id;";
           $cmd = $db->prepare($update);
           $cmd->bindParam(":id", $_POST["id"], PDO::PARAM_INT);
         }
@@ -89,7 +90,7 @@
         $db = null;
 
         echo "<h2 class=\"alert alert-success\">Review Posted</h2>";
-        // header("location:reviews.php");
+        header("location:reviews.php");
       }
 
     ?>
