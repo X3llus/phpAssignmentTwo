@@ -7,7 +7,7 @@
     $db = new PDO('mysql:host=172.31.22.43;dbname=Braden_W1095701', 'Braden_W1095701', 'P8TwvNsomx');
 
     // Make sql command to get our data
-    $select = "SELECT res.Restaurant as Restaurant, rev.rating as Rating, rev.review as Review FROM Reviews rev, Restaurants res WHERE rev.restaurant_id = res.id AND rev.id = :id;";
+    $select = "SELECT res.Restaurant as Restaurant, rev.rating as Rating, rev.review as Review, rev.photoName as Photo FROM Reviews rev, Restaurants res WHERE rev.restaurant_id = res.id AND rev.id = :id;";
     $cmd = $db->prepare($select);
 
     $cmd->bindParam(':id', $id, PDO::PARAM_INT);
@@ -18,11 +18,13 @@
     $res = $review["Restaurant"];
     $rating = $review["Rating"];
     $rev = $review["Review"];
+    $photo = $review["Photo"];
 
   } else {
     $res = null;
     $rating = null;
     $rev = null;
+    $photo = null;
   }
 
 ?>
@@ -68,6 +70,13 @@
         <label for="photo">Image</label>
         <input type="file" id="img" name="photo" accept="image/*">
       </fieldset>
+      <?php
+
+        if (!empty($photo)) {
+          echo "<img src=\"uploadedImages/$photo\" alt=\"Review Photo\">";
+        }
+
+      ?>
       <fieldset>
         <label for="star">Star Rating</label>
         <input type="number" name="star" <?php echo "value=$rating"; ?> min="1" max="5" required>
