@@ -34,7 +34,7 @@
       $title = "Leave a Review";
       require_once('header.php');
     ?>
-    <form action="addRestaurant.php" method="post">
+    <form action="addRestaurant.php" method="post" enctype="multipart/form-data">
       <h1>Leave a Review</h1>
       <fieldset>
         <label for="restaurant">Restaurant</label>
@@ -63,6 +63,10 @@
 
           ?>
         </select>
+      </fieldset>
+      <fieldset>
+        <label for="photo">Image</label>
+        <input type="file" id="img" name="photo" accept="image/*">
       </fieldset>
       <fieldset>
         <label for="star">Star Rating</label>
